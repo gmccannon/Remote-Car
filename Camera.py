@@ -2,7 +2,7 @@
 Camera.py
 
 Description:
-This script captures an image using the Raspberry Pi Camera and saves it to a file. 
+This script tests the image capture using the Raspberry Pi Camera and saves it to a file. 
 
 Features:
 - Initializes the Picamera2 instance.
