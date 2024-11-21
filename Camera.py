@@ -26,8 +26,9 @@ Output:
 - The captured image is saved as `image.jpg` in the current directory.
 """
 
-from picamera2 import Picamera2
+from picamera2 import Picamera2, NullPreview
 
 picam2 = Picamera2()
-
+picam2.configure(picam2.create_preview_configuration())
+picam2.set_preview(NullPreview(picam2))
 picam2.start_and_capture_file("image.jpg")
