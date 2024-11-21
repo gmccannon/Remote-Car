@@ -27,8 +27,10 @@ class Servo:
         elif channel=='7':
             self.PwmServo.setServoPulse(15,500+int((angle+error)/0.09))
 
-
 if __name__ == '__main__':
+    print("Rotate to 90°.") 
+    print("If they have already been at 90°, nothing will happen.")
+    print("Keep the program running!!! installing servos...")
     pwm=Servo()
     while True:
         try :
