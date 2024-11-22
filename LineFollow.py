@@ -26,28 +26,28 @@ class Line_Tracking:
         except KeyboardInterrupt:
             print ("\nEnd of program")
         
-        def run(self):
-            while True:
-                self.LMR = 0  
-                if IR01_sensor.value:
-                    self.LMR = self.LMR | 4  
-                if IR02_sensor.value:
-                    self.LMR = self.LMR | 2  
-                if IR03_sensor.value:
-                    self.LMR = self.LMR | 1  
-                
-                if self.LMR == 2:  
-                    PWM.setMotorModel(600, 600, 600, 600)
-                elif self.LMR == 4:  
-                    PWM.setMotorModel(-600, -600, 600, 600)
-                elif self.LMR == 6:  
-                    PWM.setMotorModel(-600, -600, 600, 6000)
-                elif self.LMR == 1:  
-                    PWM.setMotorModel(600, 600, -600, -600)
-                elif self.LMR == 3:  
-                    PWM.setMotorModel(600, 600, -600, -600)
-                elif self.LMR == 7: 
-                    PWM.setMotorModel(0, 0, 0, 0)
+    def run(self):
+        while True:
+            self.LMR = 0  
+            if IR01_sensor.value:
+                self.LMR = self.LMR + 4  
+            if IR02_sensor.value:
+                self.LMR = self.LMR + 2  
+            if IR03_sensor.value:
+                self.LMR = self.LMR + 1  
+            
+            if self.LMR == 2:  
+                PWM.setMotorModel(600, 600, 600, 600)
+            elif self.LMR == 4:  
+                PWM.setMotorModel(-600, -600, 600, 600)
+            elif self.LMR == 6:  
+                PWM.setMotorModel(-600, -600, 600, 6000)
+            elif self.LMR == 1:  
+                PWM.setMotorModel(600, 600, -600, -600)
+            elif self.LMR == 3:  
+                PWM.setMotorModel(600, 600, -600, -600)
+            elif self.LMR == 7: 
+                PWM.setMotorModel(0, 0, 0, 0)
 
 
 
@@ -55,6 +55,6 @@ if __name__ == '__main__':
     infrared=Line_Tracking()
     print ('Program is starting')
     try:
-        infrared.test_Infrared()
+        infrared.run()
     except KeyboardInterrupt:
         PWM.setMotorModel(0,0,0,0)
