@@ -41,7 +41,7 @@ class Line_Tracking:
             elif self.LMR == 4:  
                 PWM.setMotorModel(-600, -600, 600, 600)
             elif self.LMR == 6:  
-                PWM.setMotorModel(-600, -600, 600, 6000)
+                PWM.setMotorModel(-600, -600, 600, 600)
             elif self.LMR == 1:  
                 PWM.setMotorModel(600, 600, -600, -600)
             elif self.LMR == 3:  

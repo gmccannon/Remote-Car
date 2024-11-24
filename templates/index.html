@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Car Control</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .btn {
+            padding: 20px;
+            font-size: 20px;
+            margin: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:active {
+            background-color: #45a049;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 600px) {
+            .btn {
+                padding: 15px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .btn {
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Pi Car Control</h1>
+    <div>
+        <button id="driveUpLeft" class="btn">Up Left</button>
+        <button id="forward" class="btn">Forward</button>
+        <button id="driveUpRight" class="btn">Up Right</button>
+    </div>
+    
+    <div>
+        <button id="left" class="btn">Left</button>
+        <button id="rotateLeft" class="btn">Rotate Left</button>
+        <button id="rotateRight" class="btn">Rotate Right</button>
+        <button id="right" class="btn">Right</button>
+    </div>
+
+    <div>
+        <button id="driveDownLeft" class="btn">Down Left</button>
+        <button id="backward" class="btn">Backward</button>
+        <button id="driveDownRight" class="btn">Down Right</button>
+    </div>
+
+    <script>
+        let forwardButton = document.getElementById('forward');
+        let backwardButton = document.getElementById('backward');
+        let leftButton = document.getElementById('left');
+        let rightButton = document.getElementById('right');
+        let rotateLeftButton = document.getElementById('rotateLeft');
+        let rotateRightButton = document.getElementById('rotateRight');
+        
+        // Diagonal movement buttons
+        let driveUpLeftButton = document.getElementById('driveUpLeft');
+        let driveUpRightButton = document.getElementById('driveUpRight');
+        let driveDownLeftButton = document.getElementById('driveDownLeft');
+        let driveDownRightButton = document.getElementById('driveDownRight');
+
+        // Function to send request to start movement
+        function startMovement(url) {
+            fetch(url);
+        }
+
+        // Function to stop movement
+        function stopMovement() {
+            fetch('/stop');
+        }
+
+        // Event listeners for button press (desktop + mobile)
+        forwardButton.addEventListener('touchstart', () => startMovement('/drive_forward'));
+        forwardButton.addEventListener('touchend', stopMovement);
+        forwardButton.addEventListener('mousedown', () => startMovement('/drive_forward'));
+        forwardButton.addEventListener('mouseup', stopMovement);
+
+        backwardButton.addEventListener('touchstart', () => startMovement('/drive_backward'));
+        backwardButton.addEventListener('touchend', stopMovement);
+        backwardButton.addEventListener('mousedown', () => startMovement('/drive_backward'));
+        backwardButton.addEventListener('mouseup', stopMovement);
+
+        leftButton.addEventListener('touchstart', () => startMovement('/drive_left'));
+        leftButton.addEventListener('touchend', stopMovement);
+        leftButton.addEventListener('mousedown', () => startMovement('/drive_left'));
+        leftButton.addEventListener('mouseup', stopMovement);
+
+        rightButton.addEventListener('touchstart', () => startMovement('/drive_right'));
+        rightButton.addEventListener('touchend', stopMovement);
+        rightButton.addEventListener('mousedown', () => startMovement('/drive_right'));
+        rightButton.addEventListener('mouseup', stopMovement);
+
+        // Event listeners for the Rotate Left button
+        rotateLeftButton.addEventListener('touchstart', () => startMovement('/rotate_left'));
+        rotateLeftButton.addEventListener('touchend', stopMovement);
+        rotateLeftButton.addEventListener('mousedown', () => startMovement('/rotate_left'));
+        rotateLeftButton.addEventListener('mouseup', stopMovement);
+
+        // Event listeners for the Rotate Right button
+        rotateRightButton.addEventListener('touchstart', () => startMovement('/rotate_right'));
+        rotateRightButton.addEventListener('touchend', stopMovement);
+        rotateRightButton.addEventListener('mousedown', () => startMovement('/rotate_right'));
+        rotateRightButton.addEventListener('mouseup', stopMovement);
+
+        // Event listeners for diagonal movement buttons
+        driveUpLeftButton.addEventListener('touchstart', () => startMovement('/drive_up_left'));
+        driveUpLeftButton.addEventListener('touchend', stopMovement);
+        driveUpLeftButton.addEventListener('mousedown', () => startMovement('/drive_up_left'));
+        driveUpLeftButton.addEventListener('mouseup', stopMovement);
+
+        driveUpRightButton.addEventListener('touchstart', () => startMovement('/drive_up_right'));
+        driveUpRightButton.addEventListener('touchend', stopMovement);
+        driveUpRightButton.addEventListener('mousedown', () => startMovement('/drive_up_right'));
+        driveUpRightButton.addEventListener('mouseup', stopMovement);
+
+        driveDownLeftButton.addEventListener('touchstart', () => startMovement('/drive_down_left'));
+        driveDownLeftButton.addEventListener('touchend', stopMovement);
+        driveDownLeftButton.addEventListener('mousedown', () => startMovement('/drive_down_left'));
+        driveDownLeftButton.addEventListener('mouseup', stopMovement);
+
+        driveDownRightButton.addEventListener('touchstart', () => startMovement('/drive_down_right'));
+        driveDownRightButton.addEventListener('touchend', stopMovement);
+        driveDownRightButton.addEventListener('mousedown', () => startMovement('/drive_down_right'));
+        driveDownRightButton.addEventListener('mouseup', stopMovement);
+    </script>
+</body>
+</html>
